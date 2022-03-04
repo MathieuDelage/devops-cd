@@ -29,3 +29,9 @@ jobs:
           branch: main
           fetch-depth: 0
       - run: git push --tags
+  
+  delivery:
+    name: "build et push de l'image sur ACR"
+    runs-on: ubuntu-latest
+    steps:
+      - run echo "Hello"
