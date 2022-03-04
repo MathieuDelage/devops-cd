@@ -1,24 +1,29 @@
 name: deploy-cd
-
 on:
   push:
     branches: [main]
-
 jobs:
-  conventionnal-commit:
-    name: "Conventionnal commit"
-    runs-on: ubuntu-latest
-    steps:
-    - run: echo "Salutation" # lance une commande bash
-    - uses: actions/checkout@v2 # fait un git pull pour récupérer le code dans le runner
-    - uses: actions/setup-node@v2 # installe node js sur le runner
-      with:
-        node-version: '14'
-    - run: npx standard-version
-    - run:
-      git-config --local user.email "github-actions[bot]@users.noreply.github.com"
-      git-config --local --user.name "github-actions[bot]"
-    - uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: main
+  conventional-commit:
+      name: "Conventional commit"
+      runs-on: ubuntu-latest
+      steps:
+      - name: "Affichage d'un message d'exemple"
+        run: echo "Salutation"
+      - name: "pull du git"
+        uses: actions/checkout@v2
+      - name: "installation de NodeJS version 14"
+        uses: actions/setup-node@v2
+        with: 
+          node-version: '14'
+      - name: "configuration de l'utilisateur git"
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+      - run: git log
+      - name: "Création du CHANGELOG et du calcule de version"
+        run: npx standard-version
+      - name: "git push"
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
