@@ -28,5 +28,14 @@ def poulet():
     """
     return "Hello Poulet !"
 
+@app.get('/lapin')
+def poulet():
+    """Fonction appellée pour le chemin /lapin.
+
+    Returns:
+        str: un message de la plus grande importance
+    """
+    return "Hello Lapin !"
+
 if __name__ == "__main__":
     app.run(host=HOST, port=PORT)
