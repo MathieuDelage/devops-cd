@@ -19,5 +19,14 @@ def hello():
     """
     return "Hello, World !"
 
+@app.get('/poulet')
+def poulet():
+    """Fonction appellée pour le chemin /poulet.
+
+    Returns:
+        str: un message de la plus grande importance
+    """
+    return "Hello Poulet !"
+
 if __name__ == "__main__":
     app.run(host=HOST, port=PORT)
