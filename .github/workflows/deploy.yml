@@ -1,35 +1,3 @@
-# name: deploy-cd
-
-# on:
-#   push:
-#     branches: [main]
-
-# jobs:
-#   conventionnal-commit:
-#     name: "Conventionnal commit"
-#     runs-on: ubuntu-latest
-#     steps:
-#     - name: commande alakon
-#       run: echo "Salutation" 
-#     - name: "Pull du git dans le runner"
-#       uses: actions/checkout@v2 
-#     - name: "Installation de NodeJs versions 14 dans le runner"
-#       uses: actions/setup-node@v2 
-#       with:
-#         node-version: '14' 
-#     - name: "Configuration de l'utilisateur git dans le runner"
-#         run: |
-#           git config --local user.email "github-actions[bot]@users.noreply.github.com"
-#           git config --local user.name "github-actions[bot]"
-#     - name: "Création du CHANGELOG et du calcul de version"
-#       run: npx standard-version
-#     - name: "Push du CHANGELOG dans le répertoire git"
-#       uses: ad-m/github-push-action@master
-#       with:
-#         github_token: ${{ secrets.GITHUB_TOKEN }}
-#         branch: main
-
-
 name: deploy-cd
 on:
   push:
